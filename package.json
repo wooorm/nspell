@@ -1,0 +1,96 @@
+{
+  "name": "nspell",
+  "version": "0.0.0",
+  "description": "Hunspell-compatible spell-checker",
+  "license": "MIT",
+  "keywords": [
+    "spell",
+    "spellcheck",
+    "spellchecker",
+    "spell check",
+    "spell checker",
+    "check",
+    "spelling",
+    "myspell",
+    "hunspell"
+  ],
+  "files": [
+    "lib",
+    "index.js"
+  ],
+  "dependencies": {
+    "has": "^1.0.1",
+    "trim": "0.0.1"
+  },
+  "repository": "https://github.com/wooorm/nspell",
+  "bugs": "https://github.com/wooorm/nspell/issues",
+  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+  "contributors": [
+    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
+  ],
+  "devDependencies": {
+    "bail": "^1.0.1",
+    "browserify": "^13.0.0",
+    "dictionary-da-dk": "^1.0.2",
+    "dictionary-de": "^1.0.2",
+    "dictionary-en-gb": "^1.0.2",
+    "dictionary-en-us": "^1.0.2",
+    "dictionary-nl": "^1.0.2",
+    "esmangle": "^1.0.0",
+    "levenshtein-edit-distance": "^1.0.0",
+    "nyc": "^7.1.0",
+    "remark-cli": "^1.0.0",
+    "remark-comment-config": "^4.0.0",
+    "remark-github": "^5.0.0",
+    "remark-lint": "^4.0.0",
+    "remark-validate-links": "^4.0.0",
+    "tape": "^4.2.0",
+    "time-span": "^1.0.0",
+    "xo": "^0.16.0"
+  },
+  "scripts": {
+    "build-md": "remark . --quiet  --frail",
+    "build-bundle": "browserify index.js --bare -s nspell > nspell.js",
+    "build-mangle": "esmangle nspell.js > nspell.min.js",
+    "build": "npm run build-md && npm run build-bundle && npm run build-mangle",
+    "lint": "xo",
+    "test-api": "node test",
+    "test-coverage": "nyc --reporter lcov tape test",
+    "test": "npm run build && npm run lint && npm run test-coverage"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 100,
+    "functions": 100,
+    "branches": 100
+  },
+  "xo": {
+    "space": true,
+    "rules": {
+      "guard-for-in": "off",
+      "max-depth": "off",
+      "max-lines": "off",
+      "complexity": "off"
+    },
+    "ignores": [
+      "nspell.js",
+      "nspell.min.js"
+    ]
+  },
+  "remarkConfig": {
+    "output": true,
+    "plugins": {
+      "lint": {
+        "heading-increment": false,
+        "list-item-spacing": false,
+        "no-duplicate-headings": false
+      },
+      "github": null,
+      "comment-config": null,
+      "validate-links": null
+    },
+    "settings": {
+      "bullet": "*"
+    }
+  }
+}
