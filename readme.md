@@ -1,6 +1,6 @@
 # nspell [![Build Status][build-badge]][build-status] [![Coverage Status][coverage-badge]][coverage-status]
 
-Hunspell-compatible spell-checker in plain-vanilla JavaScript.
+Hunspell compatible spell-checker in plain-vanilla JavaScript.
 
 ## Installation
 
@@ -10,7 +10,7 @@ Hunspell-compatible spell-checker in plain-vanilla JavaScript.
 npm install nspell
 ```
 
-You probably also want to install some [dictionaries][].
+You probably also want to install some [dictionaries][]:
 
 ```bash
 npm install dictionary-en-us
@@ -64,7 +64,7 @@ Create a new spell checker.
 *   `aff` (`Buffer` or `string`)
     — Affix document to use.  Must be in UTF-8 when buffer;
 *   `dic` (`Buffer` or `string`)
-    — Dictionary document to use.  Must be in UTF-8 when buffer.
+    — Dictionary document to use.  Must be in UTF-8 when buffer;
 *   `dictionary` (`Object`)
     — Object with `aff` and `dic` properties.
 
@@ -249,7 +249,7 @@ Add a personal dictionary.
 ###### Example
 
 ```js
-spell.dictionary([
+spell.personal([
   'foo',
   'bar/color',
   '*baz'
