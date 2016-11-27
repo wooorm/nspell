@@ -8,6 +8,8 @@
 
 'use strict';
 
+/* eslint-disable import/no-dynamic-require */
+
 /* Dependencies. */
 var test = require('tape');
 var bail = require('bail');

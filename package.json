@@ -37,19 +37,16 @@
     "dictionary-en-us": "^1.0.2",
     "dictionary-nl": "^1.0.2",
     "esmangle": "^1.0.0",
-    "levenshtein-edit-distance": "^1.0.0",
-    "nyc": "^7.1.0",
-    "remark-cli": "^1.0.0",
-    "remark-comment-config": "^4.0.0",
-    "remark-github": "^5.0.0",
-    "remark-lint": "^4.0.0",
-    "remark-validate-links": "^4.0.0",
+    "levenshtein-edit-distance": "^2.0.0",
+    "nyc": "^10.0.0",
+    "remark-cli": "^2.1.0",
+    "remark-preset-wooorm": "^1.0.0",
     "tape": "^4.2.0",
     "time-span": "^1.0.0",
-    "xo": "^0.16.0"
+    "xo": "^0.17.1"
   },
   "scripts": {
-    "build-md": "remark . --quiet  --frail",
+    "build-md": "remark . -qfo",
     "build-bundle": "browserify index.js --bare -s nspell > nspell.js",
     "build-mangle": "esmangle nspell.js > nspell.min.js",
     "build": "npm run build-md && npm run build-bundle && npm run build-mangle",
@@ -69,7 +66,6 @@
     "rules": {
       "guard-for-in": "off",
       "max-depth": "off",
-      "max-lines": "off",
       "complexity": "off"
     },
     "ignores": [
@@ -78,19 +74,6 @@
     ]
   },
   "remarkConfig": {
-    "output": true,
-    "plugins": {
-      "lint": {
-        "heading-increment": false,
-        "list-item-spacing": false,
-        "no-duplicate-headings": false
-      },
-      "github": null,
-      "comment-config": null,
-      "validate-links": null
-    },
-    "settings": {
-      "bullet": "*"
-    }
+    "presets": "wooorm"
   }
 }
