@@ -1,11 +1,3 @@
-/**
- * @author Titus Wormer
- * @copyright 2016 Titus Wormer
- * @license MIT
- * @module nspell
- * @fileoverview Benchmark for `nspell`.
- */
-
 var bail = require('bail');
 var timer = require('time-span');
 var dict = require('dictionary-en-us');
@@ -13,7 +5,6 @@ var levenshtein = require('levenshtein-edit-distance');
 var misspellings = require('./misspellings');
 var nspell = require('..');
 
-/* Stuff. */
 var distances = {};
 var all = [];
 var diff;

@@ -1,32 +1,37 @@
-/**
- * @author Titus Wormer
- * @copyright 2016 Titus Wormer
- * @license MIT
- * @module nspell
- * @fileoverview Test suite for `nspell`.
- */
-
 'use strict';
 
 /* eslint-disable import/no-dynamic-require */
 
-/* Dependencies. */
 var test = require('tape');
 var bail = require('bail');
 var nspell = require('..');
 
-/* Constants. */
 var EN_GB = 'en-gb';
 var EN_US = 'en-us';
 var DA = 'da-dk';
 var NL = 'nl';
 var DE = 'de';
 
-/**
- * Start the tests with loaded `dictionaries`.
- *
- * @param {Object} dictionaries - Loaded dictionaries.
- */
+/* Load dictionaries. */
+(function () {
+  var dictionaries = {};
+  var count = 0;
+
+  [EN_US, EN_GB, NL, DE, DA].forEach(function (name, index, context) {
+    require('dictionary-' + name)(function (err, dictionary) {
+      bail(err);
+
+      dictionaries[name] = dictionary;
+      count++;
+
+      if (count === context.length) {
+        start(dictionaries);
+      }
+    });
+  });
+})();
+
+/* Start the tests with loaded `dictionaries`. */
 function start(dictionaries) {
   test('NSpell()', function (t) {
     var us;
@@ -570,22 +575,3 @@ function start(dictionaries) {
     t.end();
   });
 }
-
-/* Load dictionaries. */
-(function () {
-  var dictionaries = {};
-  var count = 0;
-
-  [EN_US, EN_GB, NL, DE, DA].forEach(function (name, index, context) {
-    require('dictionary-' + name)(function (err, dictionary) {
-      bail(err);
-
-      dictionaries[name] = dictionary;
-      count++;
-
-      if (count === context.length) {
-        start(dictionaries);
-      }
-    });
-  });
-})();

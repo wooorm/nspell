@@ -14,9 +14,9 @@
     "myspell",
     "hunspell"
   ],
+  "main": "lib/index.js",
   "files": [
-    "lib",
-    "index.js"
+    "lib"
   ],
   "dependencies": {
     "has": "^1.0.1",
@@ -47,7 +47,7 @@
   },
   "scripts": {
     "build-md": "remark . -qfo",
-    "build-bundle": "browserify index.js --bare -s nspell > nspell.js",
+    "build-bundle": "browserify lib/index.js --bare -s nspell > nspell.js",
     "build-mangle": "esmangle nspell.js > nspell.min.js",
     "build": "npm run build-md && npm run build-bundle && npm run build-mangle",
     "lint": "xo",
