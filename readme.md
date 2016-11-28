@@ -29,6 +29,10 @@ npm install dictionary-en-us
     *   [NSpell#wordCharacters()](#nspellwordcharacters)
     *   [NSpell#dictionary(dic)](#nspelldictionarydic)
     *   [NSpell#personal(dic)](#nspellpersonaldic)
+*   [Dictionaries](#dictionaries)
+    *   [Affix documents](#affix-documents)
+    *   [Dictionary documents](#dictionary-documents)
+    *   [Personal dictionary documents](#personal-dictionary-documents)
 *   [License](#license)
 
 ## Usage
@@ -287,6 +291,73 @@ them being seen as incorrect, and prevents them from showing up in
 suggestions.  Splitting a line in two with a slash, adds the left side
 and models it after the already known right word.
 
+## Dictionaries
+
+**nspell** supports many parts of Hunspell-style dictionaries.
+Essentially, the concept of a dictionary consists of one “affix” document, and
+one or more “dictionary” document.  The documents are tightly linked, so it’s
+not possible to use a Dutch affix with an English dictionary document.
+
+Below is a short introduction, see [hunspell(5)][hunspell-5] for more
+information.
+
+### Affix documents
+
+Affix documents define the language, keyboard, flags, and much more.  For
+example, a paraphrased example of a Dutch affix document:
+
+```text
+SET UTF-8
+
+KEY qwertyuiop|asdfghjkl|zxcvbnm|qawsedrftgyhujikolp|azsxdcfvgbhnjmk|aze|qsd|lm|wx|aqz|qws|
+
+WORDCHARS '’0123456789ĳ.-\/
+
+REP 487
+REP e en
+REP ji ĳ
+REP u oe
+# ...
+
+SFX An Y 11
+SFX An 0 de d
+SFX An 0 fe f
+SFX An 0 ge g
+# ...
+```
+
+### Dictionary documents
+
+Dictionary documents contain words and flags applying to those words.  For
+example:
+
+```text
+3
+foo
+bar/a
+baz/ab
+```
+
+The above document contains three words, as the count on the first line shows.
+Further lines each start with a word.  Some words contain flags, as denoted by
+the slashes.  What those flags do, and the size of flags, is defined by affix
+documents.
+
+### Personal dictionary documents
+
+Personal dictionaries are not intertwined with affix document.  They define
+new words and words to forbid.  For example:
+
+```text
+foo
+bar/baz
+*qux
+```
+
+In the above example, `foo` is added as a known word; `bar` is added as well,
+but modelled after the existing word `baz`; finally, `qux` is marked as a
+forbidden word.
+
 ## License
 
 [MIT][license] © [Titus Wormer][author]
@@ -310,3 +381,5 @@ and models it after the already known right word.
 [dictionaries]: https://github.com/wooorm/dictionaries
 
 [en-us]: https://github.com/wooorm/dictionaries/tree/master/dictionaries/en_US
+
+[hunspell-5]: https://linux.die.net/man/4/hunspell
