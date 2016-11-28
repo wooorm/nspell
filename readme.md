@@ -306,7 +306,7 @@ information.
 ### Affix documents
 
 Affix documents define the language, keyboard, flags, and much more.  For
-example, a paraphrased example of a Dutch affix document:
+example, a paraphrased example of a [Dutch][nl] affix document:
 
 ```text
 SET UTF-8
@@ -475,6 +475,8 @@ supported by **nspell**.
 [dictionaries]: https://github.com/wooorm/dictionaries
 
 [en-us]: https://github.com/wooorm/dictionaries/tree/master/dictionaries/en_US
+
+[nl]: https://github.com/wooorm/dictionaries/tree/master/dictionaries/nl_NL
 
 [hunspell-5]: https://linux.die.net/man/4/hunspell
 
