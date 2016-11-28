@@ -79,12 +79,16 @@ dictionary(function (err, dict) {
 
 ### `NSpell(aff, dic)`
 
-Create a new spell checker.
+Create a new spell checker.  Passing an affix document is required,
+through any of the below mentioned signatures.  **nspell** is useless
+without at least one `dic` passed—make sure to pass it either in the
+constructor or to [`nspell#dictionary`][dictionary].
 
 ###### Signatures
 
-*   `NSpell(aff, dic)`;
+*   `NSpell(aff[, dic])`;
 *   `NSpell(dictionary)`.
+*   `NSpell(dictionaries)`.
 
 ###### Parameters
 
@@ -93,7 +97,10 @@ Create a new spell checker.
 *   `dic` (`Buffer` or `string`)
     — Dictionary document to use.  Must be in UTF-8 when buffer;
 *   `dictionary` (`Object`)
-    — Object with `aff` and `dic` properties.
+    — Object with `aff` (required) and `dic` (optional) properties;
+*   `dictionaries` (`Array.<Dictionary>`)
+    — List of `dictionary` objects.  The first must have an `aff` key,
+    other `aff` keys are ignored.
 
 ###### Returns
 
@@ -487,3 +494,5 @@ supported by **nspell**.
 [hunspell-5]: https://linux.die.net/man/4/hunspell
 
 [affix-options]: #affix-options
+
+[dictionary]: #nspelldictionarydic

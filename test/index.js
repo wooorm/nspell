@@ -1,7 +1,5 @@
 'use strict';
 
-/* eslint-disable import/no-dynamic-require */
-
 var test = require('tape');
 var bail = require('bail');
 var nspell = require('..');
@@ -14,11 +12,18 @@ var DE = 'de';
 
 /* Load dictionaries. */
 (function () {
+  var loaders = {};
   var dictionaries = {};
   var count = 0;
 
-  [EN_US, EN_GB, NL, DE, DA].forEach(function (name, index, context) {
-    require('dictionary-' + name)(function (err, dictionary) {
+  loaders[EN_US] = require('dictionary-en-us');
+  loaders[EN_GB] = require('dictionary-en-gb');
+  loaders[NL] = require('dictionary-nl');
+  loaders[DE] = require('dictionary-de');
+  loaders[DA] = require('dictionary-da-dk');
+
+  Object.keys(loaders).forEach(function (name, index, context) {
+    loaders[name](function (err, dictionary) {
       bail(err);
 
       dictionaries[name] = dictionary;
@@ -51,23 +56,31 @@ function start(dictionaries) {
         nspell();
       },
       /Missing `aff` in dictionary/,
-      'should warn when missing `aff`'
+      'should warn when missing `aff` (1)'
     );
 
     t.throws(
       function () {
         nspell({});
       },
-      /Missing `dic` in dictionary/,
-      'should warn when missing `dic`'
+      /Missing `aff` in dictionary/,
+      'should warn when missing `aff` (2)'
     );
 
-    us = nspell(dictionaries[EN_US]);
+    t.throws(
+      function () {
+        nspell([]);
+      },
+      /Missing `aff` in dictionary/,
+      'should warn when missing `aff` (3)'
+    );
+
+    de = nspell(dictionaries[DE].aff);
 
     t.equal(
-      us instanceof nspell,
+      de instanceof nspell,
       true,
-      'should construct a new instance from a dictionary object'
+      'should construct a new instance from one buffer'
     );
 
     gb = nspell(dictionaries[EN_GB].aff, dictionaries[EN_GB].dic);
@@ -78,7 +91,31 @@ function start(dictionaries) {
       'should construct a new instance from two buffers'
     );
 
-    nl = nspell(dictionaries[NL]);
+    us = nspell(dictionaries[EN_US]);
+
+    t.equal(
+      us instanceof nspell,
+      true,
+      'should construct a new instance from a dictionary object'
+    );
+
+    nl = nspell([dictionaries[NL]]);
+
+    t.equal(
+      nl instanceof nspell,
+      true,
+      'should construct a new instance from a list of dictionary objects'
+    );
+
+    de.dictionary(dictionaries[DE].dic);
+
+    da = nspell([{aff: dictionaries[DA].aff}, {dic: dictionaries[DA].dic}]);
+
+    t.equal(
+      da instanceof nspell,
+      true,
+      'should construct a new instance from a list of partial dictionary objects'
+    );
 
     t.equal(
       typeof nl.data,
@@ -86,15 +123,11 @@ function start(dictionaries) {
       'should expose data'
     );
 
-    de = nspell(dictionaries[DE]);
-
     t.equal(
       typeof de.rules,
       'object',
       'should expose rules'
     );
-
-    da = nspell(dictionaries[DA]);
 
     t.equal(
       typeof da.flags,
