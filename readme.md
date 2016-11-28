@@ -2,22 +2,9 @@
 
 Hunspell compatible spell-checker in plain-vanilla JavaScript.
 
-## Installation
-
-[npm][]:
-
-```bash
-npm install nspell
-```
-
-You probably also want to install some [dictionaries][]:
-
-```bash
-npm install dictionary-en-us
-```
-
 ## Table of Contents
 
+*   [Installation](#installation)
 *   [Usage](#usage)
 *   [API](#api)
     *   [NSpell(aff, dic)](#nspellaff-dic)
@@ -35,6 +22,20 @@ npm install dictionary-en-us
     *   [Personal dictionary documents](#personal-dictionary-documents)
     *   [Affix options](#affix-options)
 *   [License](#license)
+
+## Installation
+
+[npm][]:
+
+```bash
+npm install nspell
+```
+
+You probably also want to install some [dictionaries][]:
+
+```bash
+npm install dictionary-en-us
+```
 
 ## Usage
 
