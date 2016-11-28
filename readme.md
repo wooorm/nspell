@@ -33,6 +33,7 @@ npm install dictionary-en-us
     *   [Affix documents](#affix-documents)
     *   [Dictionary documents](#dictionary-documents)
     *   [Personal dictionary documents](#personal-dictionary-documents)
+    *   [Affix options](#affix-options)
 *   [License](#license)
 
 ## Usage
@@ -326,6 +327,9 @@ SFX An 0 ge g
 # ...
 ```
 
+Not every option is supported in **nspell**.  See [Affix options][affix-options]
+for a list of all options and which ones are supported.
+
 ### Dictionary documents
 
 Dictionary documents contain words and flags applying to those words.  For
@@ -339,7 +343,7 @@ baz/ab
 ```
 
 The above document contains three words, as the count on the first line shows.
-Further lines each start with a word.  Some words contain flags, as denoted by
+Further lines each start with a word.  Some lines contain flags, as denoted by
 the slashes.  What those flags do, and the size of flags, is defined by affix
 documents.
 
@@ -357,6 +361,95 @@ bar/baz
 In the above example, `foo` is added as a known word; `bar` is added as well,
 but modelled after the existing word `baz`; finally, `qux` is marked as a
 forbidden word.
+
+### Affix options
+
+The following affix options are known to Hunspell.  The checked ones are
+supported by **nspell**.
+
+###### General
+
+*   [ ] `SET encoding` (UTF-8 is implied)
+*   [x] `FLAG value`
+*   [ ] `COMPLEXPREFIXES`
+*   [ ] `LANG langcode`
+*   [ ] `IGNORE characters`
+*   [ ] `AF number_of_flag_vector_aliases`
+*   [ ] `AF flag_vector`
+*   [ ] `AF definitions in the affix file:`
+*   [ ] `AF flag_vector`
+
+###### Suggestion
+
+*   [x] `KEY characters_separated_by_vertical_line_optionally`
+*   [x] `TRY characters`
+*   [x] `NOSUGGEST flag`
+*   [ ] `MAXCPDSUGS num`
+*   [ ] `MAXNGRAMSUGS num`
+*   [ ] `MAXDIFF [0-10]`
+*   [ ] `ONLYMAXDIFF`
+*   [ ] `NOSPLITSUGS`
+*   [ ] `SUGSWITHDOTS`
+*   [x] `REP number_of_replacement_definitions`
+*   [x] `REP what replacement`
+*   [ ] `MAP number_of_map_definitions`
+*   [ ] `MAP string_of_related_chars_or_parenthesized_character_sequences`
+*   [ ] `PHONE number_of_phone_definitions`
+*   [ ] `PHONE what replacement`
+*   [x] `WARN flag`
+*   [x] `FORBIDWARN`
+
+###### Compounding
+
+*   [ ] `BREAK number_of_break_definitions`
+*   [ ] `BREAK character_or_character_sequence`
+*   [x] `COMPOUNDRULE number_of_compound_definitions`
+*   [x] `COMPOUNDRULE compound_pattern`
+*   [x] `COMPOUNDMIN num`
+*   [ ] `COMPOUNDFLAG flag`
+*   [ ] `COMPOUNDBEGIN flag`
+*   [ ] `COMPOUNDLAST flag`
+*   [ ] `COMPOUNDMIDDLE flag`
+*   [x] `ONLYINCOMPOUND flag`
+*   [ ] `COMPOUNDPERMITFLAG flag`
+*   [ ] `COMPOUNDFORBIDFLAG flag`
+*   [ ] `COMPOUNDMORESUFFIXES`
+*   [ ] `COMPOUNDROOT flag`
+*   [ ] `COMPOUNDWORDMAX number`
+*   [ ] `CHECKCOMPOUNDDUP`
+*   [ ] `CHECKCOMPOUNDREP`
+*   [ ] `CHECKCOMPOUNDCASE`
+*   [ ] `CHECKCOMPOUNDTRIPLE`
+*   [ ] `SIMPLIFIEDTRIPLE`
+*   [ ] `CHECKCOMPOUNDPATTERN number_of_checkcompoundpattern_definitions`
+*   [ ] `CHECKCOMPOUNDPATTERN endchars[/flag] beginchars[/flag] [replacement]`
+*   [ ] `FORCEUCASE flag`
+*   [ ] `COMPOUNDSYLLABLE max_syllable vowels`
+*   [ ] `SYLLABLENUM flags`
+
+###### Affix creation
+
+*   [x] `PFX flag cross_product number`
+*   [x] `PFX flag stripping prefix [condition [morphological_fields...]]`
+*   [x] `SFX flag cross_product number`
+*   [x] `SFX flag stripping suffix [condition [morphological_fields...]]`
+
+###### Other
+
+*   [ ] `CIRCUMFIX flag`
+*   [x] `FORBIDDENWORD flag`
+*   [ ] `FULLSTRIP`
+*   [x] `KEEPCASE flag`
+*   [x] `ICONV number_of_ICONV_definitions`
+*   [x] `ICONV pattern pattern2`
+*   [x] `OCONV number_of_OCONV_definitions`
+*   [x] `OCONV pattern pattern2`
+*   [ ] `LEMMA_PRESENT flag`
+*   [x] `NEEDAFFIX flag`
+*   [ ] `PSEUDOROOT flag`
+*   [ ] `SUBSTANDARD flag`
+*   [x] `WORDCHARS characters`
+*   [ ] `CHECKSHARPS`
 
 ## License
 
@@ -383,3 +476,5 @@ forbidden word.
 [en-us]: https://github.com/wooorm/dictionaries/tree/master/dictionaries/en_US
 
 [hunspell-5]: https://linux.die.net/man/4/hunspell
+
+[affix-options]: #affix-options
