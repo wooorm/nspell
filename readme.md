@@ -16,6 +16,21 @@ You probably also want to install some [dictionaries][]:
 npm install dictionary-en-us
 ```
 
+## Table of Contents
+
+*   [Usage](#usage)
+*   [API](#api)
+    *   [NSpell(aff, dic)](#nspellaff-dic)
+    *   [NSpell#correct(word)](#nspellcorrectword)
+    *   [NSpell#suggest(word)](#nspellsuggestword)
+    *   [NSpell#spell(word)](#nspellspellword)
+    *   [NSpell#add(word\[, model\])](#nspelladdword-model)
+    *   [NSpell#remove(word)](#nspellremoveword)
+    *   [NSpell#wordCharacters()](#nspellwordcharacters)
+    *   [NSpell#dictionary(dic)](#nspelldictionarydic)
+    *   [NSpell#personal(dic)](#nspellpersonaldic)
+*   [License](#license)
+
 ## Usage
 
 ```js
