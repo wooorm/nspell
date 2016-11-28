@@ -2,6 +2,12 @@
 
 Hunspell compatible spell-checker in plain-vanilla JavaScript.
 
+**nspell** contains most of the essential core of Hunspell.  It does not
+contain a tokeniser but leaves many details up to implementors.  The main
+difference, conceptually, is that Hunspell is based on the user and their
+preferences, whereas **nspell** is based on explicitly passed in options,
+thus producing the same results regardless of OS, file-system, or environment.
+
 ## Table of Contents
 
 *   [Installation](#installation)
