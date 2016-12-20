@@ -308,6 +308,12 @@ function start(dictionaries) {
         'should not check words shorter than `COMPOUNDMIN` (coverage)'
       );
 
+      st.equal(
+        us.correct('thinking'),
+        true,
+        'should support rules (used to be a bug for the US dictionary)'
+      );
+
       st.end();
     });
 
