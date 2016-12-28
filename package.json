@@ -1,6 +1,6 @@
 {
   "name": "nspell",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Hunspell compatible spell checker",
   "license": "MIT",
   "keywords": [
