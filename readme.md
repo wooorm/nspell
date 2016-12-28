@@ -81,7 +81,7 @@ dictionary(function (err, dict) {
 
 Create a new spell checker.  Passing an affix document is required,
 through any of the below mentioned signatures.  **nspell** is useless
-without at least one `dic` passed—make sure to pass it either in the
+without at least one `dic` passed: make sure to pass one either in the
 constructor or to [`nspell#dictionary`][dictionary].
 
 ###### Signatures
@@ -145,7 +145,7 @@ spell.suggest('alot'); // [ 'allot', 'slot', 'clot', ... ]
 
 ###### Returns
 
-`Array.<string>` — A list with zero or more suggestions.
+`Array.<string>` — List with zero or more suggestions.
 
 ### `NSpell#spell(word)`
 
@@ -204,7 +204,7 @@ spell.suggest('nnpm'); // [ 'npm' ]
 
 ###### Returns
 
-`NSpell` — The operated on instance.
+`NSpell` — Operated on instance.
 
 ### `NSpell#remove(word)`
 
@@ -226,7 +226,7 @@ spell.correct('color'); // false
 
 ###### Returns
 
-`NSpell` — The operated on instance.
+`NSpell` — Operated on instance.
 
 ### `NSpell#wordCharacters()`
 
@@ -242,7 +242,7 @@ spell.wordCharacters(); // '0123456789'
 
 ###### Returns
 
-`string?` — The defined word characters, if any.
+`string?` — Defined word characters, if any.
 
 ### `NSpell#dictionary(dic)`
 
@@ -268,7 +268,7 @@ spell.dictionary([
 
 ###### Returns
 
-`NSpell` — The operated on instance.
+`NSpell` — Operated on instance.
 
 ###### Note
 
@@ -297,7 +297,7 @@ spell.personal([
 
 ###### Returns
 
-`NSpell` — The operated on instance.
+`NSpell` — Operated on instance.
 
 ###### Note
 
@@ -310,7 +310,7 @@ and models it after the already known right word.
 
 **nspell** supports many parts of Hunspell-style dictionaries.
 Essentially, the concept of a dictionary consists of one “affix” document, and
-one or more “dictionary” document.  The documents are tightly linked, so it’s
+one or more “dictionary” documents.  The documents are tightly linked, so it’s
 not possible to use a Dutch affix with an English dictionary document.
 
 Below is a short introduction, see [hunspell(5)][hunspell-5] for more
@@ -319,7 +319,7 @@ information.
 ### Affix documents
 
 Affix documents define the language, keyboard, flags, and much more.  For
-example, a paraphrased example of a [Dutch][nl] affix document:
+example, a paraphrased [Dutch][nl] affix document looks as follows:
 
 ```text
 SET UTF-8
