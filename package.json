@@ -32,7 +32,7 @@
   ],
   "devDependencies": {
     "bail": "^1.0.1",
-    "browserify": "^13.0.0",
+    "browserify": "^14.1.0",
     "dictionary-da-dk": "^1.0.2",
     "dictionary-de": "^1.0.2",
     "dictionary-en-gb": "^1.0.2",
