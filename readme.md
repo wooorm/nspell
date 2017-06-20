@@ -76,21 +76,21 @@ constructor or to [`nspell#dictionary`][dictionary].
 
 ###### Signatures
 
-*   `NSpell(aff[, dic])`;
-*   `NSpell(dictionary)`.
-*   `NSpell(dictionaries)`.
+*   `NSpell(aff[, dic])`
+*   `NSpell(dictionary)`
+*   `NSpell(dictionaries)`
 
 ###### Parameters
 
 *   `aff` (`Buffer` or `string`)
-    — Affix document to use.  Must be in UTF-8 when buffer;
+    — Affix document to use.  Must be in UTF-8 when buffer
 *   `dic` (`Buffer` or `string`)
-    — Dictionary document to use.  Must be in UTF-8 when buffer;
+    — Dictionary document to use.  Must be in UTF-8 when buffer
 *   `dictionary` (`Object`)
-    — Object with `aff` (required) and `dic` (optional) properties;
+    — Object with `aff` (required) and `dic` (optional) properties
 *   `dictionaries` (`Array.<Dictionary>`)
     — List of `dictionary` objects.  The first must have an `aff` key,
-    other `aff` keys are ignored.
+    other `aff` keys are ignored
 
 ###### Returns
 
@@ -110,7 +110,7 @@ spell.correct('abreviation'); //=> false
 
 ###### Parameters
 
-*   `word` (`string`) — Word to check for correct spelling.
+*   `word` (`string`) — Word to check for correct spelling
 
 ###### Returns
 
@@ -131,7 +131,7 @@ spell.suggest('alot'); //=> ['allot', 'slot', 'clot', ...]
 
 ###### Parameters
 
-*   `word` (`string`) — Word to suggest spelling corrections for.
+*   `word` (`string`) — Word to suggest spelling corrections for
 
 ###### Returns
 
@@ -150,20 +150,20 @@ spell.spell('color'); //=> {correct: true, forbidden: false, warn: false}
 
 ###### Parameters
 
-*   `word` (`string`) — Word to check.
+*   `word` (`string`) — Word to check
 
 ###### Returns
 
 `Object`, with the following properties:
 
 *   `correct` (`boolean`)
-    — Whether `word` is correctly spelled;
+    — Whether `word` is correctly spelled
 *   `forbidden` (`boolean`)
     — Whether `word` is actually correct, but forbidden from showing
-    up as such (often by the users wish);
+    up as such (often by the users wish)
 *   `warn` (`boolean`)
     — Whether `word` is correct, but should trigger a warning
-    (rarely used in dictionaries).
+    (rarely used in dictionaries)
 
 ### `NSpell#add(word[, model])`
 
@@ -186,8 +186,8 @@ spell.suggest('nnpm'); //=> ['npm']
 
 ###### Parameters
 
-*   `word` (`string`) — Word to add;
-*   `model` (`string`, optional) — Known word to model `word` after.
+*   `word` (`string`) — Word to add
+*   `model` (`string`, optional) — Known word to model `word` after
 
 ###### Returns
 
@@ -209,7 +209,7 @@ spell.correct('color'); //=> false
 
 ###### Parameters
 
-*   `word` (`string`) — Word to add;
+*   `word` (`string`) — Word to add
 
 ###### Returns
 
@@ -251,7 +251,7 @@ spell.dictionary([
 ###### Parameters
 
 *   `dic` (`Buffer` or `string`)
-    — Dictionary document to use.  Must be in UTF-8 when buffer.
+    — Dictionary document to use; must be in UTF-8 when buffer
 
 ###### Returns
 
@@ -280,7 +280,7 @@ spell.personal([
 ###### Parameters
 
 *   `dic` (`Buffer` or `string`)
-    — Dictionary document to use.  Must be in UTF-8 when buffer.
+    — Dictionary document to use; must be in UTF-8 when buffer
 
 ###### Returns
 
