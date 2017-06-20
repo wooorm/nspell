@@ -56,22 +56,12 @@ dictionary(function (err, dict) {
 
   var spell = nspell(dict);
 
-  console.log(spell.correct('colour'));
-  // false
-
-  console.log(spell.suggest('colour'));
-  // [ 'color' ]
-
-  console.log(spell.correct('color'));
-  // true
-
-  console.log(spell.correct('npm'));
-  // false
-
+  console.log(spell.correct('colour')); //=> false
+  console.log(spell.suggest('colour')); //=> ['color']
+  console.log(spell.correct('color')); //=> true
+  console.log(spell.correct('npm')); //=> false
   spell.add('npm');
-
-  console.log(spell.correct('npm'));
-  // true
+  console.log(spell.correct('npm')); //=> true
 });
 ```
 
@@ -113,9 +103,9 @@ Check if `word` is correctly spelled.
 ###### Example
 
 ```js
-spell.correct('color'); // true
-spell.correct('html'); // false
-spell.correct('abreviation'); // false
+spell.correct('color'); //=> true
+spell.correct('html'); //=> false
+spell.correct('abreviation'); //=> false
 ```
 
 ###### Parameters
@@ -133,10 +123,10 @@ Suggest correctly spelled words close to `word`.
 ###### Example
 
 ```js
-spell.suggest('colour'); // [ 'color' ]
-spell.suggest('color'); // []
-spell.suggest('html'); // [ 'HTML' ]
-spell.suggest('alot'); // [ 'allot', 'slot', 'clot', ... ]
+spell.suggest('colour'); //=> ['color']
+spell.suggest('color'); //=> []
+spell.suggest('html'); //=> ['HTML']
+spell.suggest('alot'); //=> ['allot', 'slot', 'clot', ...]
 ```
 
 ###### Parameters
@@ -154,11 +144,8 @@ Get spelling information for `word`.
 ###### Example
 
 ```js
-spell.spell('colour');
-// { correct: false, forbidden: false, warn: false }
-
-spell.spell('color');
-// { correct: true, forbidden: false, warn: false }
+spell.spell('colour'); //=> {correct: false, forbidden: false, warn: false}
+spell.spell('color'); //=> {correct: true, forbidden: false, warn: false}
 ```
 
 ###### Parameters
@@ -188,13 +175,13 @@ as `model`.
 ###### Example
 
 ```js
-spell.correct('npm'); // false
-spell.suggest('nnpm'); // [ 'ppm', 'bpm', ... ]
+spell.correct('npm'); //=> false
+spell.suggest('nnpm'); //=> ['ppm', 'bpm', ...]
 
 spell.add('npm');
 
-spell.correct('npm'); // true
-spell.suggest('nnpm'); // [ 'npm' ]
+spell.correct('npm'); //=> true
+spell.suggest('nnpm'); //=> ['npm']
 ```
 
 ###### Parameters
@@ -213,11 +200,11 @@ Remove `word` from the known words.
 ###### Example
 
 ```js
-spell.correct('color'); // true
+spell.correct('color'); //=> true
 
 spell.remove('color');
 
-spell.correct('color'); // false
+spell.correct('color'); //=> false
 ```
 
 ###### Parameters
@@ -237,7 +224,7 @@ dictionary sets `0123456789`.
 ###### Example
 
 ```js
-spell.wordCharacters(); // '0123456789'
+spell.wordCharacters(); //=> '0123456789'
 ```
 
 ###### Returns
