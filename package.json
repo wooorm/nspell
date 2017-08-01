@@ -39,7 +39,7 @@
     "esmangle": "^1.0.0",
     "levenshtein-edit-distance": "^2.0.0",
     "nyc": "^11.0.0",
-    "remark-cli": "^3.0.0",
+    "remark-cli": "^4.0.0",
     "remark-preset-wooorm": "^3.0.0",
     "tape": "^4.2.0",
     "time-span": "^2.0.0",
