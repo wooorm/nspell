@@ -6,9 +6,10 @@ var nspell = require('..');
 
 var EN_GB = 'en-gb';
 var EN_US = 'en-us';
-var DA = 'da-dk';
+var DA = 'da';
 var NL = 'nl';
 var DE = 'de';
+var ES = 'es';
 
 /* Load dictionaries. */
 (function () {
@@ -20,7 +21,8 @@ var DE = 'de';
   loaders[EN_GB] = require('dictionary-en-gb');
   loaders[NL] = require('dictionary-nl');
   loaders[DE] = require('dictionary-de');
-  loaders[DA] = require('dictionary-da-dk');
+  loaders[ES] = require('dictionary-es');
+  loaders[DA] = require('dictionary-da');
 
   Object.keys(loaders).forEach(function (name, index, context) {
     loaders[name](function (err, dictionary) {
@@ -39,6 +41,7 @@ var DE = 'de';
 /* Start the tests with loaded `dictionaries`. */
 function start(dictionaries) {
   test('NSpell()', function (t) {
+    var es = nspell(dictionaries[ES]);
     var us;
     var gb;
     var nl;
@@ -161,7 +164,7 @@ function start(dictionaries) {
       );
 
       st.equal(
-        gb.wordCharacters(),
+        es.wordCharacters(),
         null,
         'should return `null` when not defined'
       );
