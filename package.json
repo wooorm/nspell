@@ -14,6 +14,12 @@
     "myspell",
     "hunspell"
   ],
+  "repository": "wooorm/nspell",
+  "bugs": "https://github.com/wooorm/nspell/issues",
+  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+  "contributors": [
+    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
+  ],
   "main": "lib/index.js",
   "files": [
     "lib"
@@ -22,12 +28,6 @@
     "is-buffer": "^1.1.4",
     "trim": "0.0.1"
   },
-  "repository": "https://github.com/wooorm/nspell",
-  "bugs": "https://github.com/wooorm/nspell/issues",
-  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
-  "contributors": [
-    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
-  ],
   "devDependencies": {
     "bail": "^1.0.1",
     "browserify": "^14.1.0",
