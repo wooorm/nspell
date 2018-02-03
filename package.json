@@ -31,6 +31,7 @@
   "devDependencies": {
     "bail": "^1.0.1",
     "browserify": "^15.0.0",
+    "dictionary-cs": "^2.0.0",
     "dictionary-da": "^3.0.0",
     "dictionary-de": "^2.0.0",
     "dictionary-en-gb": "^2.0.0",

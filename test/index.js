@@ -617,3 +617,34 @@ function start(dictionaries) {
     t.end();
   });
 }
+
+test('broken dictionaries', function (t) {
+  t.plan(1);
+
+  t.test('dictionary-cs', function (st) {
+    var cs = require('dictionary-cs');
+
+    st.plan(2);
+
+    cs(function (err, result) {
+      var spell;
+
+      if (err) {
+        throw err;
+      }
+
+      st.doesNotThrow(
+        function () {
+          spell = nspell(result);
+        },
+        'should not throw for invalid affix regexes - GH-5'
+      );
+
+      st.deepEqual(
+        spell.suggest('znelěcznelěcznelěcznelěcznelěcznelěc'),
+        [],
+        'should work'
+      );
+    });
+  });
+});
