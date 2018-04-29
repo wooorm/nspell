@@ -46,23 +46,25 @@ npm install dictionary-en-us
 ## Usage
 
 ```js
-var dictionary = require('dictionary-en-us');
-var nspell = require('nspell');
+var dictionary = require('dictionary-en-us')
+var nspell = require('nspell')
 
-dictionary(function (err, dict) {
+dictionary(ondictionary)
+
+function ondictionary(err, dict) {
   if (err) {
-    throw err;
+    throw err
   }
 
-  var spell = nspell(dict);
+  var spell = nspell(dict)
 
-  console.log(spell.correct('colour')); //=> false
-  console.log(spell.suggest('colour')); //=> ['color']
-  console.log(spell.correct('color')); //=> true
-  console.log(spell.correct('npm')); //=> false
-  spell.add('npm');
-  console.log(spell.correct('npm')); //=> true
-});
+  console.log(spell.correct('colour')) // => false
+  console.log(spell.suggest('colour')) // => ['color']
+  console.log(spell.correct('color')) // => true
+  console.log(spell.correct('npm')) // => false
+  spell.add('npm')
+  console.log(spell.correct('npm')) // => true
+}
 ```
 
 ## API
@@ -103,9 +105,9 @@ Check if `word` is correctly spelled.
 ###### Example
 
 ```js
-spell.correct('color'); //=> true
-spell.correct('html'); //=> false
-spell.correct('abreviation'); //=> false
+spell.correct('color') // => true
+spell.correct('html') // => false
+spell.correct('abreviation') // => false
 ```
 
 ###### Parameters
@@ -123,10 +125,10 @@ Suggest correctly spelled words close to `word`.
 ###### Example
 
 ```js
-spell.suggest('colour'); //=> ['color']
-spell.suggest('color'); //=> []
-spell.suggest('html'); //=> ['HTML']
-spell.suggest('alot'); //=> ['allot', 'slot', 'clot', ...]
+spell.suggest('colour') // => ['color']
+spell.suggest('color') // => []
+spell.suggest('html') // => ['HTML']
+spell.suggest('alot') // => ['allot', 'slot', 'clot', …]
 ```
 
 ###### Parameters
@@ -144,8 +146,8 @@ Get spelling information for `word`.
 ###### Example
 
 ```js
-spell.spell('colour'); //=> {correct: false, forbidden: false, warn: false}
-spell.spell('color'); //=> {correct: true, forbidden: false, warn: false}
+spell.spell('colour') // => {correct: false, forbidden: false, warn: false}
+spell.spell('color') // => {correct: true, forbidden: false, warn: false}
 ```
 
 ###### Parameters
@@ -175,13 +177,13 @@ as `model`.
 ###### Example
 
 ```js
-spell.correct('npm'); //=> false
-spell.suggest('nnpm'); //=> ['ppm', 'bpm', ...]
+spell.correct('npm') // => false
+spell.suggest('nnpm') // => ['ppm', 'bpm', …]
 
-spell.add('npm');
+spell.add('npm')
 
-spell.correct('npm'); //=> true
-spell.suggest('nnpm'); //=> ['npm']
+spell.correct('npm') // => true
+spell.suggest('nnpm') // => ['npm']
 ```
 
 ###### Parameters
@@ -200,11 +202,11 @@ Remove `word` from the known words.
 ###### Example
 
 ```js
-spell.correct('color'); //=> true
+spell.correct('color') // => true
 
-spell.remove('color');
+spell.remove('color')
 
-spell.correct('color'); //=> false
+spell.correct('color') // => false
 ```
 
 ###### Parameters
@@ -224,7 +226,7 @@ dictionary sets `0123456789`.
 ###### Example
 
 ```js
-spell.wordCharacters(); //=> '0123456789'
+spell.wordCharacters() // => '0123456789'
 ```
 
 ###### Returns
@@ -238,14 +240,9 @@ Add an extra dictionary to the spellchecker.
 ###### Example
 
 ```js
-spell.dictionary([
-  '5',
-  'npm',
-  'nully',
-  'rebase',
-  'SHA',
-  'stringification'
-].join('\n'));
+spell.dictionary(
+  ['5', 'npm', 'nully', 'rebase', 'SHA', 'stringification'].join('\n')
+)
 ```
 
 ###### Parameters
@@ -270,11 +267,7 @@ Add a personal dictionary.
 ###### Example
 
 ```js
-spell.personal([
-  'foo',
-  'bar/color',
-  '*baz'
-].join('\n'));
+spell.personal(['foo', 'bar/color', '*baz'].join('\n'))
 ```
 
 ###### Parameters
@@ -319,13 +312,13 @@ REP 487
 REP e en
 REP ji ĳ
 REP u oe
-# ...
+# …
 
 SFX An Y 11
 SFX An 0 de d
 SFX An 0 fe f
 SFX An 0 ge g
-# ...
+# …
 ```
 
 Not every option is supported in **nspell**.  See [Affix options][affix-options]
@@ -431,9 +424,9 @@ supported by **nspell**.
 ###### Affix creation
 
 *   [x] `PFX flag cross_product number`
-*   [x] `PFX flag stripping prefix [condition [morphological_fields...]]`
+*   [x] `PFX flag stripping prefix [condition [morphological_fields…]]`
 *   [x] `SFX flag cross_product number`
-*   [x] `SFX flag stripping suffix [condition [morphological_fields...]]`
+*   [x] `SFX flag stripping suffix [condition [morphological_fields…]]`
 
 ###### Other
 
