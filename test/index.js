@@ -125,7 +125,6 @@ test('NSpell()', function(t) {
   )
 
   t.test('nspell#wordCharacters()', function(st) {
-    console.log('us: ', us)
     st.equal(
       us.wordCharacters(),
       '0123456789',
