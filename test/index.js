@@ -365,7 +365,14 @@ test('NSpell()', function(t) {
     st.equal(nl.correct('NPM'), false, 'should match affixes (2)')
     st.equal(nl.correct('Npm'), false, 'should match affixes (3)')
 
+    st.equal(us.correct('point'), true, 'should support models (1, GH-8)')
+    st.equal(us.correct('points'), true, 'should support models (2, GH-8)')
+    us.add('datapoint', 'point')
+    st.equal(us.correct('datapoint'), true, 'should support models (3, GH-8)')
+    st.equal(us.correct('datapoints'), true, 'should support models (4, GH-8)')
+
     nl.remove('npm')
+    us.remove('datapoint')
 
     st.end()
   })
