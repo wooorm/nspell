@@ -25,8 +25,7 @@
     "lib"
   ],
   "dependencies": {
-    "is-buffer": "^2.0.0",
-    "trim": "0.0.1"
+    "is-buffer": "^2.0.0"
   },
   "devDependencies": {
     "bail": "^1.0.1",

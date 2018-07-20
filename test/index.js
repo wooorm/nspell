@@ -495,3 +495,35 @@ test('broken dictionaries', function(t) {
     )
   })
 })
+
+test('parse dictionaries', function(t) {
+  t.plan(1)
+
+  t.test('nspell#spell(value)', function(st) {
+    var dic = [
+      '5',
+      'aaa\\//A',
+      'bbb/#*',
+      'ccc/#* #test',
+      'ddd#/A',
+      'eee#test'
+    ].join('\n')
+    var spell = nspell('SET UTF-8\n', dic)
+
+    st.equal(spell.correct('aaa/'), true, 'should see slash (/) as word')
+
+    st.deepEqual(spell.data.bbb, ['#', '*'], 'should see hash (#) as flag')
+
+    st.deepEqual(
+      spell.data.ccc,
+      ['#', '*'],
+      'should see first hash (#) as flag and second hash as comment'
+    )
+
+    st.equal(spell.correct('ddd'), true, 'should see hash (#) as comment')
+
+    st.equal(spell.correct('eee'), true, 'should see hash (#) as comment')
+
+    st.end()
+  })
+})
