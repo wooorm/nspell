@@ -38,7 +38,6 @@
     "dictionary-en-us": "^2.0.0",
     "dictionary-es": "^1.2.1",
     "dictionary-nl": "^1.0.2",
-    "esmangle": "^1.0.0",
     "levenshtein-edit-distance": "^2.0.0",
     "nyc": "^11.0.0",
     "prettier": "^1.12.1",
@@ -46,12 +45,13 @@
     "remark-preset-wooorm": "^4.0.0",
     "tape": "^4.2.0",
     "time-span": "^2.0.0",
+    "tinyify": "^2.4.3",
     "xo": "^0.20.0"
   },
   "scripts": {
     "format": "remark . -qfo && prettier --write '**/*.js' && xo --fix",
-    "build-bundle": "browserify lib/index.js --bare -s nspell > nspell.js",
-    "build-mangle": "esmangle nspell.js > nspell.min.js",
+    "build-bundle": "browserify . -s nspell > nspell.js",
+    "build-mangle": "browserify . -s nspell -p tinyify > nspell.min.js",
     "build": "npm run build-bundle && npm run build-mangle",
     "test-api": "node test",
     "test-coverage": "nyc --reporter lcov tape test/index.js",
