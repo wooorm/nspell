@@ -63,7 +63,7 @@ process.on('exit', function() {
   successes = types.true.length
 
   diff = totalTime / misspellings.length
-  percentage = (failures / count * 100).toFixed(2)
+  percentage = ((failures / count) * 100).toFixed(2)
   message = [
     'success: ' + (100 - percentage) + '% (' + successes + ')',
     'fail: ' + percentage + '% (' + failures + ')',
