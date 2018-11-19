@@ -257,7 +257,7 @@ test('NSpell()', function(t) {
 
     st.deepEqual(
       us.suggest('propper'),
-      ['dropper', 'proper', 'cropper', 'propped', 'popper', 'prosper'],
+      ['dropper', 'proper', 'cropper', 'popper', 'propped', 'prosper'],
       'should suggest alternatives'
     )
 
@@ -295,7 +295,7 @@ test('NSpell()', function(t) {
 
     st.deepEqual(
       us.suggest('collor'),
-      ['color', 'colloq', 'collar'],
+      ['color', 'collar', 'colloq'],
       'should suggest removals'
     )
 
@@ -339,7 +339,7 @@ test('NSpell()', function(t) {
 
     st.deepEqual(
       us.suggest('npm'),
-      ['pm', 'ppm', 'bpm', 'wpm', 'rpm', 'Nam', 'Np', 'NPR', 'NM'],
+      ['bpm', 'pm', 'ppm', 'rpm', 'wpm', 'Nam', 'NM', 'Np', 'NPR'],
       'should initially receive suggestions'
     )
 
@@ -392,7 +392,7 @@ test('NSpell()', function(t) {
 
     st.deepEqual(
       us.suggest('npm'),
-      ['pm', 'ppm', 'bpm', 'wpm', 'rpm', 'Nam', 'Np', 'NPR', 'NM'],
+      ['bpm', 'pm', 'ppm', 'rpm', 'wpm', 'Nam', 'NM', 'Np', 'NPR'],
       'should now receive suggestions'
     )
 
