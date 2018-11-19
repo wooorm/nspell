@@ -1,4 +1,9 @@
-# nspell [![Build Status][build-badge]][build-status] [![Coverage Status][coverage-badge]][coverage-status]
+# nspell
+
+[![Travis][build-badge]][build-status]
+[![Coverage][coverage-badge]][coverage-status]
+[![Downloads][downloads-badge]][downloads]
+[![Size][size-badge]][size]
 
 Hunspell compatible spell-checker in plain-vanilla JavaScript.
 
@@ -451,13 +456,21 @@ supported by **nspell**.
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/wooorm/nspell.svg
+[build-badge]: https://img.shields.io/travis/wooorm/nspell/master.svg
 
 [build-status]: https://travis-ci.org/wooorm/nspell
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/nspell.svg
 
 [coverage-status]: https://codecov.io/github/wooorm/nspell
+
+[downloads-badge]: https://img.shields.io/npm/dm/nspell.svg
+
+[downloads]: https://www.npmjs.com/package/nspell
+
+[size-badge]: https://img.shields.io/bundlephobia/minzip/nspell.svg
+
+[size]: https://bundlephobia.com/result?p=nspell
 
 [npm]: https://docs.npmjs.com/cli/install
 
