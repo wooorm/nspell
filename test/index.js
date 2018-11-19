@@ -262,6 +262,12 @@ test('NSpell()', function(t) {
     )
 
     st.deepEqual(
+      us.suggest('Ghandi'),
+      ['shandy', 'Brandi', 'Ghana', 'Grand', 'Grandee', 'Grands', 'handy'],
+      'should suggest alternatives'
+    )
+
+    st.deepEqual(
       us.suggest(' '),
       [],
       'should return an empty array for empty values'
@@ -357,8 +363,7 @@ test('NSpell()', function(t) {
   })
 
   t.test('nspell#add(value, model)', function(st) {
-    /* `azc` is a Dutch word only properly spelled
-     * in its lower-case form. */
+    // `azc` is a Dutch word only properly spelled in its lower-case form.
     st.equal(nl.add('npm', 'azc'), nl, 'should return the context object')
 
     st.equal(nl.correct('npm'), true, 'should match affixes (1)')
@@ -403,7 +408,7 @@ test('NSpell()', function(t) {
     var personal = 'Supercalifragilisticexpialidocious'
     var word = personal.toLowerCase()
 
-    /* <3 Mary Poppins. */
+    // <3 Mary Poppins.
     st.equal(us.correct(personal), false, 'set-up')
 
     st.equal(us.personal(personal), us, 'should return the context object')
@@ -427,7 +432,7 @@ test('NSpell()', function(t) {
     st.equal(nl.correct('npm'), true, 'should match affixes (1)')
     st.equal(nl.correct('NPM'), false, 'should match affixes (2)')
 
-    /* Clean. */
+    // Clean.
     us.remove(personal)
     nl.remove('eierlevendbarend')
     nl.remove('npm')
