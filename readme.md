@@ -463,7 +463,7 @@ supported by **nspell**.
 
 [license]: license
 
-[author]: http://wooorm.com
+[author]: https://wooorm.com
 
 [dictionaries]: https://github.com/wooorm/dictionaries
 

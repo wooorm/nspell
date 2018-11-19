@@ -16,9 +16,9 @@
   ],
   "repository": "wooorm/nspell",
   "bugs": "https://github.com/wooorm/nspell/issues",
-  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+  "author": "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
   "contributors": [
-    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
   ],
   "main": "lib/index.js",
   "files": [
