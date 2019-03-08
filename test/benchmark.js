@@ -70,11 +70,10 @@ process.on('exit', function() {
     'total: ' + count
   ]
 
-  /* eslint-disable no-console */
   console.log()
   console.log('average time: ' + diff + 'ms')
   console.log(message.join(', '))
-  console.log('differences: ', distances)
+  console.log('differences:', distances)
   console.log()
   console.log(types.false)
   console.log(time)
