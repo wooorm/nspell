@@ -502,9 +502,38 @@ test('broken dictionaries', function(t) {
 })
 
 test('parse dictionaries', function(t) {
-  t.plan(1)
+  t.plan(2)
 
-  t.test('nspell#spell(value)', function(st) {
+  t.test('iconv and oconv', function(st) {
+    var dic = ['2', 'ĳdel', 'ĳdeltuit'].join('\n')
+    var aff = [
+      'SET UTF-8',
+      '',
+      'ICONV 1',
+      'ICONV ij ĳ',
+      '',
+      'OCONV 1',
+      'OCONV ĳ ij'
+    ].join('\n')
+    var spell = nspell(aff + '\n', dic + '\n')
+
+    st.equal(spell.correct('ijdel'), true, 'should support iconv (#1)')
+    st.equal(spell.correct('ĳdel'), true, 'should support iconv (#2)')
+    st.deepEqual(
+      spell.suggest('ijde'),
+      ['ijdel', 'Ĳdel'],
+      'should support oconv (#1)'
+    )
+    st.deepEqual(
+      spell.suggest('ĳde'),
+      ['ijdel', 'Ĳdel'],
+      'should support oconv (#2)'
+    )
+
+    st.end()
+  })
+
+  t.test('slashes and comments', function(st) {
     var dic = [
       '5',
       'aaa\\//A',
