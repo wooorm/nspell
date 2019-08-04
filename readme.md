@@ -112,7 +112,7 @@ Check if `word` is correctly spelled.
 ```js
 spell.correct('color') // => true
 spell.correct('html') // => false
-spell.correct('abreviation') // => false
+spell.correct('abbreviation') // => false
 ```
 
 ###### Parameters
