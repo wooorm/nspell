@@ -246,7 +246,7 @@ Add an extra dictionary to the spellchecker.
 
 ```js
 spell.dictionary(
-  ['5', 'npm', 'nully', 'rebase', 'SHA', 'stringification'].join('\n')
+  ['5', 'npm', 'nullish', 'rebase', 'SHA', 'stringification'].join('\n')
 )
 ```
 
