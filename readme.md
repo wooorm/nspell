@@ -45,13 +45,13 @@ npm install nspell
 You probably also want to install some [dictionaries][]:
 
 ```bash
-npm install dictionary-en-us
+npm install dictionary-en
 ```
 
 ## Usage
 
 ```js
-var dictionary = require('dictionary-en-us')
+var dictionary = require('dictionary-en')
 var nspell = require('nspell')
 
 dictionary(ondictionary)
