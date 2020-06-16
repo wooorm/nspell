@@ -1,3 +1,5 @@
 coverage/
 nspell.js
 nspell.min.js
+*.json
+*.md

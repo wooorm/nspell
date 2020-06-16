@@ -6,7 +6,7 @@ var test = require('tape')
 var nspell = require('..')
 
 var EN_GB = 'en-gb'
-var EN_US = 'en-us'
+var EN_US = 'en'
 var DA = 'da'
 var NL = 'nl'
 var DE = 'de'
@@ -17,7 +17,7 @@ var codes = [EN_GB, EN_US, DA, NL, DE, ES, CS]
 
 var dictionaries = {}
 
-codes.forEach(function(code) {
+codes.forEach(function (code) {
   dictionaries[code] = {
     aff: fs.readFileSync(
       path.join('node_modules', 'dictionary-' + code, 'index.aff')
@@ -28,7 +28,7 @@ codes.forEach(function(code) {
   }
 })
 
-test('NSpell()', function(t) {
+test('NSpell()', function (t) {
   var es = nspell(dictionaries[ES])
   var us
   var gb
@@ -39,7 +39,7 @@ test('NSpell()', function(t) {
   t.equal(typeof nspell, 'function', 'should expose a function')
 
   t.throws(
-    function() {
+    function () {
       nspell()
     },
     /Missing `aff` in dictionary/,
@@ -47,7 +47,7 @@ test('NSpell()', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       nspell({})
     },
     /Missing `aff` in dictionary/,
@@ -55,7 +55,7 @@ test('NSpell()', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       nspell([])
     },
     /Missing `aff` in dictionary/,
@@ -124,7 +124,7 @@ test('NSpell()', function(t) {
     'should expose a replacement table'
   )
 
-  t.test('nspell#wordCharacters()', function(st) {
+  t.test('nspell#wordCharacters()', function (st) {
     st.equal(
       us.wordCharacters(),
       '0123456789',
@@ -136,7 +136,7 @@ test('NSpell()', function(t) {
     st.end()
   })
 
-  t.test('nspell#correct(value)', function(st) {
+  t.test('nspell#correct(value)', function (st) {
     st.equal(
       us.correct('colour'),
       false,
@@ -240,7 +240,7 @@ test('NSpell()', function(t) {
     st.end()
   })
 
-  t.test('nspell#suggest(value)', function(st) {
+  t.test('nspell#suggest(value)', function (st) {
     st.deepEqual(
       us.suggest('color'),
       [],
@@ -336,7 +336,7 @@ test('NSpell()', function(t) {
     st.end()
   })
 
-  t.test('nspell#add(value)', function(st) {
+  t.test('nspell#add(value)', function (st) {
     st.equal(
       us.correct('npm'),
       false,
@@ -362,7 +362,7 @@ test('NSpell()', function(t) {
     st.end()
   })
 
-  t.test('nspell#add(value, model)', function(st) {
+  t.test('nspell#add(value, model)', function (st) {
     // `azc` is a Dutch word only properly spelled in its lower-case form.
     st.equal(nl.add('npm', 'azc'), nl, 'should return the context object')
 
@@ -382,7 +382,7 @@ test('NSpell()', function(t) {
     st.end()
   })
 
-  t.test('nspell#remove(value)', function(st) {
+  t.test('nspell#remove(value)', function (st) {
     st.equal(us.correct('npm'), true, 'should initially be marked as correct')
 
     st.deepEqual(
@@ -404,7 +404,7 @@ test('NSpell()', function(t) {
     st.end()
   })
 
-  t.test('nspell#personal(buf|string)', function(st) {
+  t.test('nspell#personal(buf|string)', function (st) {
     var personal = 'Supercalifragilisticexpialidocious'
     var word = personal.toLowerCase()
 
@@ -440,7 +440,7 @@ test('NSpell()', function(t) {
     st.end()
   })
 
-  t.test('nspell#spell(value)', function(st) {
+  t.test('nspell#spell(value)', function (st) {
     var spell
     var aff
     var dic
@@ -481,15 +481,15 @@ test('NSpell()', function(t) {
   t.end()
 })
 
-test('broken dictionaries', function(t) {
+test('broken dictionaries', function (t) {
   t.plan(1)
 
-  t.test('dictionary-cs', function(st) {
+  t.test('dictionary-cs', function (st) {
     var spell
 
     st.plan(2)
 
-    st.doesNotThrow(function() {
+    st.doesNotThrow(function () {
       spell = nspell(dictionaries[CS])
     }, 'should not throw for invalid affix regexes - GH-5')
 
@@ -501,10 +501,10 @@ test('broken dictionaries', function(t) {
   })
 })
 
-test('parse dictionaries', function(t) {
+test('parse dictionaries', function (t) {
   t.plan(2)
 
-  t.test('iconv and oconv', function(st) {
+  t.test('iconv and oconv', function (st) {
     var dic = ['2', 'ĳdel', 'ĳdeltuit'].join('\n')
     var aff = [
       'SET UTF-8',
@@ -533,7 +533,7 @@ test('parse dictionaries', function(t) {
     st.end()
   })
 
-  t.test('slashes and comments', function(st) {
+  t.test('slashes and comments', function (st) {
     var dic = [
       '5',
       'aaa\\//A',

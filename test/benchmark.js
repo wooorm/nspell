@@ -1,9 +1,9 @@
 var bail = require('bail')
 var timer = require('time-span')
-var dict = require('dictionary-en-us')
+var dict = require('dictionary-en')
 var levenshtein = require('levenshtein-edit-distance')
-var misspellings = require('./misspellings')
 var nspell = require('..')
+var misspellings = require('./misspellings')
 
 var distances = {}
 var all = []
@@ -12,14 +12,14 @@ var percentage
 var message
 var totalTime = 0
 
-dict(function(err, dictionary) {
+dict(function (err, dictionary) {
   var spell
 
   bail(err)
 
   spell = nspell(dictionary)
 
-  misspellings.forEach(function(misspelling) {
+  misspellings.forEach(function (misspelling) {
     var value = misspelling.value
     var end = timer()
     var result = spell.suggest(value)
@@ -27,7 +27,7 @@ dict(function(err, dictionary) {
 
     totalTime += time
 
-    misspelling.suggestions.forEach(function(suggestion) {
+    misspelling.suggestions.forEach(function (suggestion) {
       all.push({
         input: value,
         output: suggestion,
@@ -39,14 +39,14 @@ dict(function(err, dictionary) {
   })
 })
 
-process.on('exit', function() {
+process.on('exit', function () {
   var count = all.length
   var types = {true: [], false: []}
   var time = {}
   var failures
   var successes
 
-  all.forEach(function(fixture) {
+  all.forEach(function (fixture) {
     var av = Math.ceil(fixture.time / 50) * 50
 
     if (!time[av]) {

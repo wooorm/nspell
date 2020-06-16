@@ -31,24 +31,24 @@
     "bail": "^1.0.1",
     "browserify": "^16.0.0",
     "dictionary-cs": "^2.0.0",
-    "dictionary-da": "^3.0.0",
+    "dictionary-da": "^4.0.0",
     "dictionary-de": "^2.0.0",
     "dictionary-en-gb": "^2.0.0",
-    "dictionary-en-us": "^2.0.0",
-    "dictionary-es": "^1.2.1",
-    "dictionary-nl": "^1.0.2",
+    "dictionary-en": "^3.0.0",
+    "dictionary-es": "^2.0.0",
+    "dictionary-nl": "^1.0.0",
     "levenshtein-edit-distance": "^2.0.0",
-    "nyc": "^14.0.0",
-    "prettier": "^1.12.1",
-    "remark-cli": "^6.0.0",
-    "remark-preset-wooorm": "^4.0.0",
-    "tape": "^4.2.0",
-    "time-span": "^3.0.0",
-    "tinyify": "^2.4.3",
-    "xo": "^0.24.0"
+    "nyc": "^15.0.0",
+    "prettier": "^2.0.0",
+    "remark-cli": "^8.0.0",
+    "remark-preset-wooorm": "^7.0.0",
+    "tape": "^5.0.0",
+    "time-span": "^4.0.0",
+    "tinyify": "^2.0.0",
+    "xo": "^0.32.0"
   },
   "scripts": {
-    "format": "remark . -qfo && prettier --write \"**/*.js\" && xo --fix",
+    "format": "remark . -qfo && prettier . --write && xo --fix",
     "build-bundle": "browserify . -s nspell > nspell.js",
     "build-mangle": "browserify . -s nspell -p tinyify > nspell.min.js",
     "build": "npm run build-bundle && npm run build-mangle",
@@ -75,8 +75,12 @@
     "esnext": false,
     "rules": {
       "unicorn/prefer-exponentiation-operator": "off",
+      "unicorn/prefer-includes": "off",
+      "unicorn/prefer-number-properties": "off",
+      "unicorn/prefer-optional-catch-binding": "off",
       "guard-for-in": "off",
-      "max-depth": "off"
+      "max-depth": "off",
+      "prefer-exponentiation-operator": "off"
     },
     "ignores": [
       "nspell.js"
