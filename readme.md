@@ -225,7 +225,7 @@ spell.correct('color') // => false
 ### `NSpell#wordCharacters()`
 
 Get extra word characters defined by the loaded affix file.
-Most affix files don’t set these, but for example the [en-US][]
+Most affix files don’t set these, but for example the [en][]
 dictionary sets `0123456789`.
 
 ###### Example
@@ -456,7 +456,7 @@ supported by **nspell**.
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/wooorm/nspell/master.svg
+[build-badge]: https://img.shields.io/travis/wooorm/nspell.svg
 
 [build-status]: https://travis-ci.org/wooorm/nspell
 
@@ -480,9 +480,9 @@ supported by **nspell**.
 
 [dictionaries]: https://github.com/wooorm/dictionaries
 
-[en-us]: https://github.com/wooorm/dictionaries/tree/master/dictionaries/en_US
+[en]: https://github.com/wooorm/dictionaries/tree/HEAD/dictionaries/en
 
-[nl]: https://github.com/wooorm/dictionaries/tree/master/dictionaries/nl_NL
+[nl]: https://github.com/wooorm/dictionaries/tree/HEAD/dictionaries/nl
 
 [hunspell-5]: https://linux.die.net/man/4/hunspell
 
