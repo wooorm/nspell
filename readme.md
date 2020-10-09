@@ -5,20 +5,20 @@
 [![Downloads][downloads-badge]][downloads]
 [![Size][size-badge]][size]
 
-Hunspell compatible spell-checker in plain-vanilla JavaScript.
+Hunspell-like spell-checker in plain-vanilla JavaScript.
 
-**nspell** contains most of the essential core of Hunspell.  It does not
-contain a tokeniser but leaves many details up to implementors.  The main
-difference, conceptually, is that Hunspell is based on the user and their
-preferences, whereas **nspell** is based on explicitly passed in options,
-thus producing the same results regardless of OS, file-system, or environment.
+**nspell** contains most of the essential core of Hunspell.
+It does not contain a tokeniser but leaves many details up to implementors.
+The main difference, conceptually, is that Hunspell is based on the user and
+their preferences, whereas **nspell** is based on explicitly passed in options,
+thus producing the same results regardless of OS, file system, or environment.
 
-## Table of Contents
+## Contents
 
-*   [Installation](#installation)
-*   [Usage](#usage)
+*   [Install](#install)
+*   [Use](#use)
 *   [API](#api)
-    *   [`NSpell(aff, dic)`](#nspellaff-dic)
+    *   [`NSpell(dictionary)`](#nspelldictionary)
     *   [`NSpell#correct(word)`](#nspellcorrectword)
     *   [`NSpell#suggest(word)`](#nspellsuggestword)
     *   [`NSpell#spell(word)`](#nspellspellword)
@@ -34,21 +34,21 @@ thus producing the same results regardless of OS, file-system, or environment.
     *   [Affix options](#affix-options)
 *   [License](#license)
 
-## Installation
+## Install
 
 [npm][]:
 
-```bash
+```sh
 npm install nspell
 ```
 
 You probably also want to install some [dictionaries][]:
 
-```bash
+```sh
 npm install dictionary-en
 ```
 
-## Usage
+## Use
 
 ```js
 var dictionary = require('dictionary-en')
@@ -74,27 +74,28 @@ function ondictionary(err, dict) {
 
 ## API
 
-### `NSpell(aff, dic)`
+### `NSpell(dictionary)`
 
-Create a new spell checker.  Passing an affix document is required,
-through any of the below mentioned signatures.  **nspell** is useless
-without at least one `dic` passed: make sure to pass one either in the
-constructor or to [`nspell#dictionary`][dictionary].
+Create a new spell checker.
+Passing an affix document is required, through any of the below mentioned
+signatures.
+**nspell** is useless without at least one `dic` passed: make sure to pass one
+either in the constructor or to [`nspell#dictionary`][dictionary].
 
 ###### Signatures
 
-*   `NSpell(aff[, dic])`
 *   `NSpell(dictionary)`
+*   `NSpell(aff[, dic])`
 *   `NSpell(dictionaries)`
 
 ###### Parameters
 
+*   `dictionary` (`Object`)
+    — Object with `aff` (required) and `dic` (optional) properties
 *   `aff` (`Buffer` or `string`)
     — Affix document to use.  Must be in UTF-8 when buffer
 *   `dic` (`Buffer` or `string`)
     — Dictionary document to use.  Must be in UTF-8 when buffer
-*   `dictionary` (`Object`)
-    — Object with `aff` (required) and `dic` (optional) properties
 *   `dictionaries` (`Array.<Dictionary>`)
     — List of `dictionary` objects.  The first must have an `aff` key,
     other `aff` keys are ignored
@@ -166,18 +167,18 @@ spell.spell('color') // => {correct: true, forbidden: false, warn: false}
 *   `correct` (`boolean`)
     — Whether `word` is correctly spelled
 *   `forbidden` (`boolean`)
-    — Whether `word` is actually correct, but forbidden from showing
-    up as such (often by the users wish)
+    — Whether `word` is actually correct, but forbidden from showing up as such
+    (often by the users wish)
 *   `warn` (`boolean`)
     — Whether `word` is correct, but should trigger a warning
     (rarely used in dictionaries)
 
 ### `NSpell#add(word[, model])`
 
-Add `word` to known words.  If no model is given, the word will be
-marked as correct in the future, and will show up in spelling
-suggestions.  If a model is given, `word` will be handled the same
-as `model`.
+Add `word` to known words.
+If no model is given, the word will be marked as correct in the future, and will
+show up in spelling suggestions.
+If a model is given, `word` will be handled the same as `model`.
 
 ###### Example
 
@@ -225,8 +226,8 @@ spell.correct('color') // => false
 ### `NSpell#wordCharacters()`
 
 Get extra word characters defined by the loaded affix file.
-Most affix files don’t set these, but for example the [en][]
-dictionary sets `0123456789`.
+Most affix files don’t set these, but for example the [en][] dictionary sets
+`0123456789`.
 
 ###### Example
 
@@ -261,9 +262,9 @@ spell.dictionary(
 
 ###### Note
 
-The given `dic` must be designed to work with the already loaded
-affix.  It’s not possible to add dictionary files from different
-languages together (use two `NSpell` instances for that).
+The given `dic` must be designed to work with the already loaded affix.
+It’s not possible to add dictionary files from different languages together
+(use two `NSpell` instances for that).
 
 ### `NSpell#personal(dic)`
 
@@ -286,25 +287,26 @@ spell.personal(['foo', 'bar/color', '*baz'].join('\n'))
 
 ###### Note
 
-Lines starting with a `*` mark a word as forbidden, which results in
-them being seen as incorrect, and prevents them from showing up in
-suggestions.  Splitting a line in two with a slash, adds the left side
-and models it after the already known right word.
+Lines starting with a `*` mark a word as forbidden, which results in them being
+seen as incorrect, and prevents them from showing up in suggestions.
+Splitting a line in two with a slash, adds the left side and models it after the
+already known right word.
 
 ## Dictionaries
 
 **nspell** supports many parts of Hunspell-style dictionaries.
 Essentially, the concept of a dictionary consists of one “affix” document, and
-one or more “dictionary” documents.  The documents are tightly linked, so it’s
-not possible to use a Dutch affix with an English dictionary document.
+one or more “dictionary” documents.
+The documents are tightly linked, so it’s not possible to use a Dutch affix with
+an English dictionary document.
 
 Below is a short introduction, see [hunspell(5)][hunspell-5] for more
 information.
 
 ### Affix documents
 
-Affix documents define the language, keyboard, flags, and much more.  For
-example, a paraphrased [Dutch][nl] affix document looks as follows:
+Affix documents define the language, keyboard, flags, and much more.
+For example, a paraphrased [Dutch][nl] affix document looks as follows:
 
 ```text
 SET UTF-8
@@ -326,13 +328,14 @@ SFX An 0 ge g
 # …
 ```
 
-Not every option is supported in **nspell**.  See [Affix options][affix-options]
-for a list of all options and which ones are supported.
+Not every option is supported in **nspell**.
+See [Affix options][affix-options] for a list of all options and which ones are
+supported.
 
 ### Dictionary documents
 
-Dictionary documents contain words and flags applying to those words.  For
-example:
+Dictionary documents contain words and flags applying to those words.
+For example:
 
 ```text
 3
@@ -342,14 +345,15 @@ baz/ab
 ```
 
 The above document contains three words, as the count on the first line shows.
-Further lines each start with a word.  Some lines contain flags, as denoted by
-the slashes.  What those flags do, and the size of flags, is defined by affix
-documents.
+Further lines each start with a word.
+Some lines contain flags, as denoted by the slashes.
+What those flags do, and the size of flags, is defined by affix documents.
 
 ### Personal dictionary documents
 
-Personal dictionaries are not intertwined with affix document.  They define
-new words and words to forbid.  For example:
+Personal dictionaries are not intertwined with affix document.
+They define new words and words to forbid.
+For example:
 
 ```text
 foo
@@ -363,8 +367,8 @@ forbidden word.
 
 ### Affix options
 
-The following affix options are known to Hunspell.  The checked ones are
-supported by **nspell**.
+The following affix options are known to Hunspell.
+The checked ones are supported by **nspell**.
 
 ###### General
 
