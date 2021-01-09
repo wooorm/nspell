@@ -570,10 +570,14 @@ test('parse dictionaries', function (t) {
 
     st.equal(spell.correct('aaa/'), true, 'should see slash (/) as word')
 
-    st.deepEqual(spell.data.bbb, ['#', '*'], 'should see hash (#) as flag')
+    st.deepEqual(
+      spell.data.get('bbb'),
+      ['#', '*'],
+      'should see hash (#) as flag'
+    )
 
     st.deepEqual(
-      spell.data.ccc,
+      spell.data.get('ccc'),
       ['#', '*'],
       'should see first hash (#) as flag and second hash as comment'
     )
