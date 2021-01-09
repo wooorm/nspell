@@ -475,6 +475,30 @@ test('NSpell()', function (t) {
       'should include `warn: true` for warnings'
     )
 
+    st.deepEqual(
+      us.suggest('dont'),
+      [
+        'dent',
+        'cont',
+        'font',
+        'wont',
+        'dint',
+        'dolt',
+        'don',
+        "don't",
+        'dona',
+        'done',
+        'dong',
+        'dons',
+        'dost',
+        'dot',
+        'Donn',
+        'Mont',
+        'ONT'
+      ],
+      'should suggest alternatives including correct conjunction'
+    )
+
     st.end()
   })
 
