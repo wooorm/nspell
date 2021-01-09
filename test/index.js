@@ -257,13 +257,13 @@ test('NSpell()', function (t) {
 
     st.deepEqual(
       us.suggest('propper'),
-      ['dropper', 'proper', 'cropper', 'popper', 'propped', 'prosper'],
+      ['proper', 'propped', 'cropper', 'dropper', 'popper', 'prosper'],
       'should suggest alternatives'
     )
 
     st.deepEqual(
       us.suggest('Ghandi'),
-      ['shandy', 'Brandi', 'Ghana', 'Grand', 'Grandee', 'Grands', 'handy'],
+      ['Brandi', 'Ghana', 'Grandee', 'Shanxi', 'hand', 'hands', 'handy'],
       'should suggest alternatives'
     )
 
@@ -301,7 +301,7 @@ test('NSpell()', function (t) {
 
     st.deepEqual(
       us.suggest('collor'),
-      ['color', 'collar', 'colloq'],
+      ['color', 'colloq', 'collar'],
       'should suggest removals'
     )
 
