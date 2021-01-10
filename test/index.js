@@ -263,7 +263,18 @@ test('NSpell()', function (t) {
 
     st.deepEqual(
       us.suggest('Ghandi'),
-      ['Brandi', 'Ghana', 'Grandee', 'Shanxi', 'hand', 'hands', 'handy'],
+      [
+        'Brandi',
+        'Ghana',
+        'Grandee',
+        'Hand',
+        'Hands',
+        'Handy',
+        'Hanoi',
+        'Hindi',
+        'Randi',
+        'Shanxi'
+      ],
       'should suggest alternatives'
     )
 
@@ -479,12 +490,11 @@ test('NSpell()', function (t) {
       us.suggest('dont'),
       [
         'cont',
-        'font',
         'dent',
         'dint',
         'done',
         'dong',
-        'wont',
+        'font',
         'dolt',
         'don',
         "don't",
@@ -492,9 +502,10 @@ test('NSpell()', function (t) {
         'dons',
         'dost',
         'dot',
+        'wont',
         'Donn',
         'Mont',
-        'ONT'
+        'Ont'
       ],
       'should suggest alternatives including correct conjunction'
     )
