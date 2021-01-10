@@ -489,23 +489,23 @@ test('NSpell()', function (t) {
     st.deepEqual(
       us.suggest('dont'),
       [
-        'dent',
         'cont',
-        'font',
-        'wont',
+        'dent',
         'dint',
+        'done',
+        'dong',
+        'font',
         'dolt',
         'don',
         "don't",
         'dona',
-        'done',
-        'dong',
         'dons',
         'dost',
         'dot',
+        'wont',
         'Donn',
         'Mont',
-        'ONT'
+        'Ont'
       ],
       'should suggest alternatives including correct conjunction'
     )
