@@ -499,6 +499,12 @@ test('NSpell()', function (t) {
       'should suggest alternatives including correct conjunction'
     )
 
+    st.deepEqual(
+      us.suggest('ToDo'),
+      ['doDo', 'TOD', 'TODD', 'Togo', 'Tojo', 'too', 'Toto'],
+      'TODO: This test behaves unexpectedly, but is needed for coverage.'
+    )
+
     st.end()
   })
 
