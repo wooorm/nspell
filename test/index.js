@@ -499,6 +499,24 @@ test('NSpell()', function (t) {
       'should suggest alternatives including correct conjunction'
     )
 
+    st.deepEqual(
+      us.suggest('Iffect'),
+      ['Affect', 'Effect', 'Infect'],
+      'should suggest sentence-case with replaced first character'
+    )
+
+    st.deepEqual(
+      us.suggest('Acnada'),
+      ['Canada'],
+      'should suggest sentence-case with swapped first character'
+    )
+
+    st.deepEqual(
+      us.suggest('COLORFU'),
+      ['COLORFUL'],
+      'should suggest alternatives for upper-case with added letter'
+    )
+
     st.end()
   })
 
