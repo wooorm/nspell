@@ -500,9 +500,27 @@ test('NSpell()', function (t) {
     )
 
     st.deepEqual(
-      us.suggest('ToDo'),
-      ['doDo', 'TOD', 'TODD', 'Togo', 'Tojo', 'too', 'Toto'],
-      'TODO: This test behaves unexpectedly, but is needed for coverage.'
+      us.suggest('Iffect'),
+      ['Affect', 'Effect', 'Infect'],
+      'should suggest sentence-case with replaced first character'
+    )
+
+    st.deepEqual(
+      us.suggest('Acnada'),
+      ['Canada'],
+      'should suggest sentence-case with swapped first character'
+    )
+
+    st.deepEqual(
+      us.suggest('abDUL'),
+      ['Abdul'],
+      'should suggest sentence-case for funky case when sentence-case in dictionary'
+    )
+
+    st.deepEqual(
+      us.suggest('COLORFU'),
+      ['COLORFUL'],
+      'should suggest alternatives for upper-case with added letter'
     )
 
     st.end()
