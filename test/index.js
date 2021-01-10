@@ -512,6 +512,12 @@ test('NSpell()', function (t) {
     )
 
     st.deepEqual(
+      us.suggest('abDUL'),
+      ['Abdul'],
+      'should suggest sentence-case for funky case when sentence-case in dictionary'
+    )
+
+    st.deepEqual(
       us.suggest('COLORFU'),
       ['COLORFUL'],
       'should suggest alternatives for upper-case with added letter'
