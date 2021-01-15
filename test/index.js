@@ -500,9 +500,9 @@ test('NSpell()', function (t) {
     )
 
     st.deepEqual(
-      us.suggest('ToDo'),
-      ['doDo', 'TOD', 'TODD', 'Togo', 'Tojo', 'too', 'Toto'],
-      'TODO: This test behaves unexpectedly, but is needed for coverage.'
+      us.suggest('TODO'),
+      [`DODO`, `TOD`, `TODD`, `TOGO`, `TOJO`, `TOO`, `TOTO`],
+      'should suggest alternatives for uppercase input'
     )
 
     st.end()
