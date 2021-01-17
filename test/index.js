@@ -532,6 +532,7 @@ test('NSpell()', function (t) {
       us.suggest('COLORFU'),
       ['COLORFUL'],
       'should suggest alternatives for upper-case with added letter'
+    )
 
     st.deepEqual(
       us.suggest('TODO'),
