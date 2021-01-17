@@ -257,13 +257,13 @@ test('NSpell()', function (t) {
 
     st.deepEqual(
       us.suggest('propper'),
-      ['dropper', 'proper', 'cropper', 'popper', 'propped', 'prosper'],
+      ['proper', 'propped', 'cropper', 'dropper', 'popper', 'prosper'],
       'should suggest alternatives'
     )
 
     st.deepEqual(
       us.suggest('Ghandi'),
-      ['shandy', 'Brandi', 'Ghana', 'Grand', 'Grandee', 'Grands', 'handy'],
+      ['Brandi', 'Ghana', 'Grandee', 'Shanxi', 'hand', 'hands', 'handy'],
       'should suggest alternatives'
     )
 
@@ -301,7 +301,7 @@ test('NSpell()', function (t) {
 
     st.deepEqual(
       us.suggest('collor'),
-      ['color', 'collar', 'colloq'],
+      ['color', 'colloq', 'collar'],
       'should suggest removals'
     )
 
@@ -478,17 +478,17 @@ test('NSpell()', function (t) {
     st.deepEqual(
       us.suggest('dont'),
       [
-        'dent',
         'cont',
         'font',
-        'wont',
+        'dent',
         'dint',
+        'done',
+        'dong',
+        'wont',
         'dolt',
         'don',
         "don't",
         'dona',
-        'done',
-        'dong',
         'dons',
         'dost',
         'dot',
@@ -497,6 +497,12 @@ test('NSpell()', function (t) {
         'ONT'
       ],
       'should suggest alternatives including correct conjunction'
+    )
+
+    st.deepEqual(
+      us.suggest('TODO'),
+      [`DODO`, `TOD`, `TODD`, `TOGO`, `TOJO`, `TOO`, `TOTO`],
+      'should suggest alternatives for uppercase input'
     )
 
     st.end()
