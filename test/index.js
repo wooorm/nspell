@@ -162,39 +162,31 @@ test('NSpell()', function (t) {
     st.equal(
       us.correct('ABDUL'),
       true,
-      'should check for sentence-case when upper-case (ok)'
+      'should check for sentence case when uppercase (ok)'
     )
 
     st.equal(
       us.correct('COLOUR'),
       false,
-      'should check for sentence-case when upper-case (not ok)'
+      'should check for sentence case when uppercase (not ok)'
     )
 
-    st.equal(us.correct('Color'), true, 'should check for lower-case (ok)')
+    st.equal(us.correct('Color'), true, 'should check for lowercase (ok)')
 
-    st.equal(
-      us.correct('Colour'),
-      false,
-      'should check for lower-case (not ok)'
-    )
+    st.equal(us.correct('Colour'), false, 'should check for lowercase (not ok)')
 
-    st.equal(
-      us.correct('Colour'),
-      false,
-      'should check for lower-case (not ok)'
-    )
+    st.equal(us.correct('Colour'), false, 'should check for lowercase (not ok)')
 
     st.equal(
       nl.correct('DVD'),
       false,
-      'should not check upper-case for sentence-case when KEEPCASE'
+      'should not check uppercase for sentence case when KEEPCASE'
     )
 
     st.equal(
       nl.correct('dVd'),
       false,
-      'should not check other casing for lower-case when KEEPCASE'
+      'should not check other casing for lowercase when KEEPCASE'
     )
 
     st.equal(
@@ -289,13 +281,13 @@ test('NSpell()', function (t) {
     st.deepEqual(
       us.suggest('Colour'),
       ['Color'],
-      'should suggest alternatives for sentence-case'
+      'should suggest alternatives for sentence case'
     )
 
     st.deepEqual(
       us.suggest('COLOUR'),
       ['COLOR'],
-      'should suggest alternatives for upper-case'
+      'should suggest alternatives for uppercase'
     )
 
     st.deepEqual(
@@ -374,7 +366,7 @@ test('NSpell()', function (t) {
   })
 
   t.test('nspell#add(value, model)', function (st) {
-    // `azc` is a Dutch word only properly spelled in its lower-case form.
+    // `azc` is a Dutch word only properly spelled in its lowercase form.
     st.equal(nl.add('npm', 'azc'), nl, 'should return the context object')
 
     st.equal(nl.correct('npm'), true, 'should match affixes (1)')
@@ -513,30 +505,30 @@ test('NSpell()', function (t) {
     st.deepEqual(
       us.suggest('Iffect'),
       ['Affect', 'Effect', 'Infect'],
-      'should suggest sentence-case with replaced first character'
+      'should suggest sentence case with replaced first character'
     )
 
     st.deepEqual(
       us.suggest('Acnada'),
       ['Canada'],
-      'should suggest sentence-case with swapped first character'
+      'should suggest sentence case with swapped first character'
     )
 
     st.deepEqual(
       us.suggest('abDUL'),
       ['Abdul'],
-      'should suggest sentence-case for funky case when sentence-case in dictionary'
+      'should suggest sentence case for funky case when sentence case in dictionary'
     )
 
     st.deepEqual(
       us.suggest('COLORFU'),
       ['COLORFUL'],
-      'should suggest alternatives for upper-case with added letter'
+      'should suggest alternatives for uppercase with added letter'
     )
 
     st.deepEqual(
       us.suggest('TODO'),
-      [`DODO`, `TOD`, `TODD`, `TOGO`, `TOJO`, `TOO`, `TOTO`],
+      ['DODO', 'TOD', 'TODD', 'TOGO', 'TOJO', 'TOO', 'TOTO'],
       'should suggest alternatives for uppercase input'
     )
 
