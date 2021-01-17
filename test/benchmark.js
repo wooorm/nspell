@@ -12,10 +12,10 @@ var percentage
 var message
 var totalTime = 0
 
-dict(function (err, dictionary) {
+dict(function (error, dictionary) {
   var spell
 
-  bail(err)
+  bail(error)
 
   spell = nspell(dictionary)
 

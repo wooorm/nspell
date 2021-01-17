@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "bail": "^1.0.1",
-    "browserify": "^16.0.0",
+    "browserify": "^17.0.0",
     "dictionary-cs": "^2.0.0",
     "dictionary-da": "^4.0.0",
     "dictionary-de": "^2.0.0",
@@ -40,12 +40,12 @@
     "levenshtein-edit-distance": "^2.0.0",
     "nyc": "^15.0.0",
     "prettier": "^2.0.0",
-    "remark-cli": "^8.0.0",
-    "remark-preset-wooorm": "^7.0.0",
+    "remark-cli": "^9.0.0",
+    "remark-preset-wooorm": "^8.0.0",
     "tape": "^5.0.0",
     "time-span": "^4.0.0",
     "tinyify": "^3.0.0",
-    "xo": "^0.33.0"
+    "xo": "^0.37.0"
   },
   "scripts": {
     "format": "remark . -qfo && prettier . --write && xo --fix",
@@ -74,7 +74,6 @@
     "prettier": true,
     "esnext": false,
     "rules": {
-      "unicorn/prefer-exponentiation-operator": "off",
       "unicorn/prefer-includes": "off",
       "unicorn/prefer-number-properties": "off",
       "unicorn/prefer-optional-catch-binding": "off",
