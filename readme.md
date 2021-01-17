@@ -1,7 +1,7 @@
 # nspell
 
-[![Travis][build-badge]][build-status]
-[![Coverage][coverage-badge]][coverage-status]
+[![Travis][build-badge]][build]
+[![Coverage][coverage-badge]][coverage]
 [![Downloads][downloads-badge]][downloads]
 [![Size][size-badge]][size]
 
@@ -460,13 +460,13 @@ The checked ones are supported by **nspell**.
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/wooorm/nspell.svg
+[build-badge]: https://github.com/wooorm/nspell/workflows/main/badge.svg
 
-[build-status]: https://travis-ci.org/wooorm/nspell
+[build]: https://github.com/wooorm/nspell/actions
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/nspell.svg
 
-[coverage-status]: https://codecov.io/github/wooorm/nspell
+[coverage]: https://codecov.io/github/wooorm/nspell
 
 [downloads-badge]: https://img.shields.io/npm/dm/nspell.svg
 
