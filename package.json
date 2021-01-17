@@ -48,9 +48,9 @@
     "xo": "^0.37.0"
   },
   "scripts": {
-    "format": "remark . -qfo && prettier . --write && xo --fix",
-    "build-bundle": "browserify . -s nspell > nspell.js",
-    "build-mangle": "browserify . -s nspell -p tinyify > nspell.min.js",
+    "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",
+    "build-bundle": "browserify . -s nspell -o nspell.js",
+    "build-mangle": "browserify . -s nspell -o nspell.min.js -p tinyify",
     "build": "npm run build-bundle && npm run build-mangle",
     "test-api": "node test",
     "test-coverage": "nyc --reporter lcov tape test/index.js",
@@ -74,6 +74,7 @@
     "prettier": true,
     "esnext": false,
     "rules": {
+      "unicorn/explicit-length-check": "off",
       "unicorn/prefer-includes": "off",
       "unicorn/prefer-number-properties": "off",
       "unicorn/prefer-optional-catch-binding": "off",

@@ -31,7 +31,7 @@ dict(function (error, dictionary) {
       all.push({
         input: value,
         output: suggestion,
-        correct: result.indexOf(suggestion) !== -1,
+        correct: result.indexOf(suggestion) > -1,
         time: time,
         res: result
       })
